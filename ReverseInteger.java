@@ -10,16 +10,23 @@ public class ReverseInteger {
 
         StringBuilder sb = new StringBuilder();
 
-        if (x < 0) {
+        long y = x;
+
+        if (y < 0) {
             sb.append("-");
-            x = -x;
+            y = -y;
         }
 
 
         do {
-            sb.append(x % 10);
-            x = x / 10;
-        } while (x >= 1);
+            sb.append(y % 10);
+            y = y / 10;
+        } while (y >= 1);
+
+        if(Long.parseLong(sb.toString())>Integer.MAX_VALUE
+                ||Long.parseLong(sb.toString())<Integer.MIN_VALUE){
+            return 0;
+        }
 
 
         return Integer.parseInt(sb.toString());
@@ -41,7 +48,7 @@ public class ReverseInteger {
 
     public static void main(String[] args) {
 
-        int x = -123;
+        int x = -214748364;
 
         int y = reverse(x);
 
